@@ -1,0 +1,211 @@
+<div id="app">
+  <div class="auth-window">
+    <div class="auth-window__icon">
+      <img
+        class="auth-window__img"
+        src="projects/my-chat/images/auth-icon.svg"
+        alt="иконка авторизации"
+      />
+    </div>
+    <h2 class="auth-window__header">Авторизация</h2>
+    <p class="auth-window__descr">
+      Введите пожалуйста свой ник для дальнейшей авторизации
+    </p>
+    <form class="auth-window__form">
+      <input
+        class="auth-window__form-input"
+        placeholder="Введите свой ник"
+        name="nickName"
+        required
+      />
+      <button class="auth-window__form-button">Войти</button>
+    </form>
+  </div>
+  <div class="chat disable">
+    <div class="chat__left-col">
+      <div class="chat__burger">
+        <div class="chat__burger-line"></div>
+        <div class="chat__burger-line"></div>
+        <div class="chat__burger-line"></div>
+      </div>
+      <ul class="chat__users-list">
+        <li class="chat__users-item user">
+          <div class="user__icon">
+            <img
+              class="user__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="user__info">
+            <div class="user__nickname">первый юзер</div>
+            <div class="user__last-message">привет</div>
+          </div>
+        </li>
+        <li class="chat__users-item user">
+          <div class="user__icon">
+            <img
+              class="user__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="user__info">
+            <div class="user__nickname">второй юзер</div>
+            <div class="user__last-message">привет</div>
+          </div>
+        </li>
+        <li class="chat__users-item user">
+          <div class="user__icon">
+            <img
+              class="user__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="user__info">
+            <div class="user__nickname">третий юзер</div>
+            <div class="user__last-message">привет</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="chat__right-col">
+      <div class="chat__header">
+        <h3 class="chat__header-text">Чат</h3>
+        <div class="chat__header-info">2 участника</div>
+      </div>
+      <div class="chat__history">
+        <div class="chat__message-group messages">
+          <div class="messages__icon">
+            <img
+              class="messages__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="messages__info">
+            <div class="messages__name">Умник</div>
+            <ul class="messages__list">
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Привет</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Кто здесь?</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Никого нет</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="chat__message-group messages messages--self-message">
+          <div class="messages__icon">
+            <img
+              class="messages__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="messages__info">
+            <div class="messages__name">Мой ник</div>
+            <ul class="messages__list">
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Привет</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Я ведь здесь</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Ушел...</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="chat__message-group messages messages--self-message">
+          <div class="messages__icon">
+            <img
+              class="messages__avatar"
+              src="projects/my-chat/images/default-avatar.svg"
+              alt="аватар"
+            />
+          </div>
+          <div class="messages__info">
+            <div class="messages__name">Мой ник</div>
+            <ul class="messages__list">
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Привет</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Я ведь здесь</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+              <li class="messages__item">
+                <div class="messages__item-content">
+                  <p class="message__text">Ушел...</p>
+                  <div class="message__time">13:13</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="chat__footer">
+        <form class="chat__footer-form" autocomplete="off">
+          <input
+            class="chat__footer-input"
+            placeholder="Введите сообщение..."
+            name="console"
+            required
+          />
+          <button class="chat__footer-button" type="button">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-photo disable">
+    <div class="photo-loader">
+      <div class="photo-loader__header">
+        <h3 class="photo-loader__header-text">Загрузка фото</h3>
+        <img
+          class="photo-loader__close"
+          src="projects/my-chat/images/close-icon.svg"
+          alt="закрыть окно"
+        />
+      </div>
+      <div class="photo-loader__info">
+        <div class="photo-loader__icon">
+          <img
+            class="photo-loader__avatar"
+            src="projects/my-chat/images/default-avatar.svg"
+            alt="аватар"
+          />
+        </div>
+        <div class="photo-loader__name">юзер</div>
+      </div>
+    </div>
+  </div>
+</div>
