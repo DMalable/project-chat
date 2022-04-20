@@ -11,14 +11,14 @@
     <p class="auth-window__descr">
       Введите пожалуйста свой ник для дальнейшей авторизации
     </p>
-    <form class="auth-window__form">
+    <form class="auth-window__form" autocomplete="off">
       <input
         class="auth-window__form-input"
         placeholder="Введите свой ник"
         name="nickName"
         required
       />
-      <button class="auth-window__form-button">Войти</button>
+      <button class="auth-window__form-button" type="button">Войти</button>
     </form>
   </div>
   <div class="chat disable">
@@ -39,33 +39,7 @@
           </div>
           <div class="user__info">
             <div class="user__nickname">первый юзер</div>
-            <div class="user__last-message">привет</div>
-          </div>
-        </li>
-        <li class="chat__users-item user">
-          <div class="user__icon">
-            <img
-              class="user__avatar"
-              src="projects/my-chat/images/default-avatar.svg"
-              alt="аватар"
-            />
-          </div>
-          <div class="user__info">
-            <div class="user__nickname">второй юзер</div>
-            <div class="user__last-message">привет</div>
-          </div>
-        </li>
-        <li class="chat__users-item user">
-          <div class="user__icon">
-            <img
-              class="user__avatar"
-              src="projects/my-chat/images/default-avatar.svg"
-              alt="аватар"
-            />
-          </div>
-          <div class="user__info">
-            <div class="user__nickname">третий юзер</div>
-            <div class="user__last-message">привет</div>
+            <div class="user__last-message"></div>
           </div>
         </li>
       </ul>
@@ -73,10 +47,10 @@
     <div class="chat__right-col">
       <div class="chat__header">
         <h3 class="chat__header-text">Чат</h3>
-        <div class="chat__header-info">2 участника</div>
+        <div class="chat__header-info"></div>
       </div>
       <div class="chat__history">
-        <div class="chat__message-group messages">
+        <!-- <div class="chat__message-group messages">
           <div class="messages__icon">
             <img
               class="messages__avatar"
@@ -107,71 +81,7 @@
               </li>
             </ul>
           </div>
-        </div>
-        <div class="chat__message-group messages messages--self-message">
-          <div class="messages__icon">
-            <img
-              class="messages__avatar"
-              src="projects/my-chat/images/default-avatar.svg"
-              alt="аватар"
-            />
-          </div>
-          <div class="messages__info">
-            <div class="messages__name">Мой ник</div>
-            <ul class="messages__list">
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Привет</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Я ведь здесь</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Ушел...</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="chat__message-group messages messages--self-message">
-          <div class="messages__icon">
-            <img
-              class="messages__avatar"
-              src="projects/my-chat/images/default-avatar.svg"
-              alt="аватар"
-            />
-          </div>
-          <div class="messages__info">
-            <div class="messages__name">Мой ник</div>
-            <ul class="messages__list">
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Привет</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Я ведь здесь</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-              <li class="messages__item">
-                <div class="messages__item-content">
-                  <p class="message__text">Ушел...</p>
-                  <div class="message__time">13:13</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </div>-->
       </div>
       <div class="chat__footer">
         <form class="chat__footer-form" autocomplete="off">

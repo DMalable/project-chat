@@ -5,20 +5,30 @@ export default class LoginWindow {
 
     const loginNameInput = element.querySelector('.auth-window__form-input');
     const submitButton = element.querySelector('.auth-window__form-button');
-    // const loginError = element.querySelector('[data-role=login-error]');
+
+    const makeLogin = () => {
+      const name = loginNameInput.value.trim();
+
+      if (name) {
+        this.onLogin(name);
+
+        localStorage.data = '';
+        localStorage.data = JSON.stringify({
+          myNickName: name,
+        });
+      }
+    };
+
+    loginNameInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        makeLogin();
+      }
+    });
 
     submitButton.addEventListener('click', (e) => {
       e.preventDefault();
-      // loginError.textContent = '';
-
-      const name = loginNameInput.value.trim();
-
-      // if (!name) {
-      if (name) {
-        // loginError.textContent = 'Введите никнейм';
-        // } else {
-        this.onLogin(name);
-      }
+      makeLogin();
     });
   }
 

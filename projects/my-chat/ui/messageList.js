@@ -1,0 +1,62 @@
+import { sanitize } from '../utils';
+
+export default class MessageList {
+  constructor(element) {
+    this.element = element;
+  }
+
+  add(from, text, isNewGroup) {
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2, 0);
+    const minutes = String(date.getMinutes()).padStart(2, 0);
+    const time = `${hours}:${minutes}`;
+    // if new group add message group, else add message in group
+    if (isNewGroup) {
+      const item = document.createElement('div');
+      item.classList.add('chat__message-group', 'messages', 'messages--self-message');
+      // item.classList.add('chat__message-group', 'messages');
+      item.innerHTML = `
+        <div class="messages__icon">
+        <img
+          class="messages__avatar"
+          src="projects/my-chat/images/default-avatar.svg"
+        />
+        </div>
+        <div class="messages__info">
+        <div class="messages__name">${sanitize(from)}</div>
+        <ul class="messages__list">
+          <li class="messages__item">
+            <div class="messages__item-content">
+              <p class="message__text">${sanitize(text)}</p>
+              <div class="message__time">${time}</div>
+            </div>
+          </li>
+        </ul>
+        </div>
+        `;
+      this.element.append(item);
+    } else {
+      const item = document.createElement('div');
+      item.classList.add('messages__item');
+      item.innerHTML = `
+            <div class="messages__item-content">
+              <p class="message__text">${sanitize(text)}</p>
+              <div class="message__time">${time}</div>
+            </div>
+        `;
+      this.element.lastElementChild.querySelector('.messages__list').append(item);
+    }
+
+    // this.element.scrollTop = this.element.scrollHeight;
+  }
+
+  // addSystemMessage(message) {
+  //   const item = document.createElement('div');
+
+  //   item.classList.add('message-item-system');
+  //   item.textContent = message;
+
+  //   this.element.append(item);
+  //   // this.element.scrollTop = this.element.scrollHeight;
+  // }
+}
