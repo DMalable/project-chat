@@ -13,8 +13,11 @@ export default class MessageList {
     // if new group add message group, else add message in group
     if (isNewGroup) {
       const item = document.createElement('div');
-      item.classList.add('chat__message-group', 'messages', 'messages--self-message');
-      // item.classList.add('chat__message-group', 'messages');
+      const myUserName = document.querySelector('.chat__user-name').dataset.name;
+      item.classList.add('chat__message-group', 'messages');
+      if (from === myUserName) {
+        item.classList.add('messages--self-message');
+      }
       item.innerHTML = `
         <div class="messages__icon">
         <img
@@ -46,17 +49,5 @@ export default class MessageList {
         `;
       this.element.lastElementChild.querySelector('.messages__list').append(item);
     }
-
-    // this.element.scrollTop = this.element.scrollHeight;
   }
-
-  // addSystemMessage(message) {
-  //   const item = document.createElement('div');
-
-  //   item.classList.add('message-item-system');
-  //   item.textContent = message;
-
-  //   this.element.append(item);
-  //   // this.element.scrollTop = this.element.scrollHeight;
-  // }
 }
