@@ -22,7 +22,7 @@ export default class MessageList {
         <div class="messages__icon">
         <img
           class="messages__avatar"
-          src="projects/my-chat/images/default-avatar.svg"
+          src="projects/my-chat/photos/${from}.png?t=${Date.now()}"
         />
         </div>
         <div class="messages__info">

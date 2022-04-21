@@ -4,6 +4,7 @@ import ModalPhoto from './ui/modalPhoto';
 import UserName from './ui/userName';
 import MyUserName from './ui/myUserName';
 import UserList from './ui/userList';
+import UserPhoto from './ui/userPhoto';
 import MessageList from './ui/messageList';
 import MessageSender from './ui/messageSender';
 import WSClient from './wsClient';
@@ -30,6 +31,12 @@ export default class MyChat {
         document.querySelector('.chat__footer-form'),
         this.onSend.bind(this)
       ),
+      //!!!!!!!!!!!!!!!!!!!!
+      userPhoto: new UserPhoto(
+        //!!!!!!!!!!!!!!!!!!!!!!!!
+        document.querySelector('.chat__users-list'),
+        this.onUpload.bind(this)
+      ),
     };
 
     const burger = this.ui.mainWindow.element.querySelector('.chat__burger');
@@ -38,6 +45,19 @@ export default class MyChat {
       this.ui.modalPhoto.show();
     });
   }
+
+  onUpload(data) {
+    this.ui.userPhoto.set(data);
+
+    fetch('/my-chat/upload-photo', {
+      method: 'post',
+      body: JSON.stringify({
+        name: this.ui.userName.get(),
+        image: data,
+      }),
+    });
+  }
+
   onSend(message) {
     this.wsClient.sendTextMessage(message);
     this.ui.messageSender.clear();
@@ -50,6 +70,9 @@ export default class MyChat {
     this.ui.mainWindow.show();
     this.ui.userName.set(name);
     this.ui.myUserName.set(name);
+    console.log(`/my-chat/photos/${name}.png?t=${Date.now()}`);
+    this.ui.userPhoto.set(`/my-chat/photos/${name}.png?t=${Date.now()}`);
+    // this.ui.userPhoto.set(`/my-chat/photos/${name}.png`);
   }
 
   onMessage({ type, from, data }) {
@@ -73,6 +96,16 @@ export default class MyChat {
       const isNewGroup = from !== lastUserMsg || isFirstMsg;
       this.ui.messageList.add(from, data.message, isNewGroup);
       this.ui.userList.UpdateUserList(from, data.message);
+      //!!!!!!!!!!!!!!!!!!!!!!
+    } else if (type === 'photo-changed') {
+      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      const avatars = document.querySelectorAll(`.messages__avatar`);
+
+      for (const avatar of avatars) {
+        avatar.style.backgroundImage = `url(/my-chat/photos/${
+          data.name
+        }.png?t=${Date.now()})`;
+      }
     }
   }
 }

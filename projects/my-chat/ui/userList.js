@@ -16,7 +16,7 @@ export default class UserList {
       <div class="user__icon">
       <img
       class="user__avatar"
-      src="projects/my-chat/images/default-avatar.svg"
+      src="projects/my-chat/photos/${name}.png"
       alt="аватар"
       />
       </div>
@@ -26,15 +26,6 @@ export default class UserList {
       </div>
       `;
 
-      // if (name === from) {
-      //   let hasMsg = element.lastElementChild.classList.contains('user__last-message');
-      //   if (!hasMsg) {
-      //     let msgElem = document.createElement('div');
-      //     msgElem.classList.add('user__last-message');
-      //     element.append(msgElem);
-      //   }
-      //   element.lastElementChild.textContent = lastMsg;
-      // }
       fragment.append(element);
     }
     this.element.append(fragment);
