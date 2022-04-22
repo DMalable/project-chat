@@ -22,7 +22,10 @@ export default class MyChat {
         this.onLogin.bind(this)
       ),
       mainWindow: new MainWindow(document.querySelector('.chat')),
-      modalPhoto: new ModalPhoto(document.querySelector('.modal-photo')),
+      modalPhoto: new ModalPhoto(
+        document.querySelector('.modal-photo'),
+        this.onUpload.bind(this)
+      ),
       myUserName: new MyUserName(document.querySelector('.chat__user-name')),
       userName: new UserName(document.querySelector('.user__nickname')),
       userList: new UserList(document.querySelector('.chat__users-list')),
@@ -31,24 +34,25 @@ export default class MyChat {
         document.querySelector('.chat__footer-form'),
         this.onSend.bind(this)
       ),
-      //!!!!!!!!!!!!!!!!!!!!
       userPhoto: new UserPhoto(
-        //!!!!!!!!!!!!!!!!!!!!!!!!
         document.querySelector('.chat__users-list'),
         this.onUpload.bind(this)
       ),
     };
 
     const burger = this.ui.mainWindow.element.querySelector('.chat__burger');
+    const modalUserName = this.ui.modalPhoto.element.querySelector('.photo-loader__name');
 
     burger.addEventListener('click', () => {
+      const myUserName = document.querySelector('.chat__user-name').dataset.name;
+      modalUserName.textContent = myUserName;
       this.ui.modalPhoto.show();
     });
   }
 
   onUpload(data) {
-    this.ui.userPhoto.set(data);
-
+    this.ui.userPhoto.setAvatar(data);
+    this.ui.modalPhoto.setAvatar(data);
     fetch('/my-chat/upload-photo', {
       method: 'post',
       body: JSON.stringify({
@@ -70,9 +74,8 @@ export default class MyChat {
     this.ui.mainWindow.show();
     this.ui.userName.set(name);
     this.ui.myUserName.set(name);
-    console.log(`/my-chat/photos/${name}.png?t=${Date.now()}`);
-    this.ui.userPhoto.set(`/my-chat/photos/${name}.png?t=${Date.now()}`);
-    // this.ui.userPhoto.set(`/my-chat/photos/${name}.png`);
+    this.ui.userPhoto.setAvatar(`/my-chat/photos/${name}.png?t=${Date.now()}`);
+    this.ui.modalPhoto.setAvatar(`/my-chat/photos/${name}.png?t=${Date.now()}`);
   }
 
   onMessage({ type, from, data }) {
@@ -96,15 +99,17 @@ export default class MyChat {
       const isNewGroup = from !== lastUserMsg || isFirstMsg;
       this.ui.messageList.add(from, data.message, isNewGroup);
       this.ui.userList.UpdateUserList(from, data.message);
-      //!!!!!!!!!!!!!!!!!!!!!!
     } else if (type === 'photo-changed') {
-      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      const avatars = document.querySelectorAll(`.messages__avatar`);
+      const avatars = document.querySelectorAll(`.messages__icon`);
 
       for (const avatar of avatars) {
-        avatar.style.backgroundImage = `url(/my-chat/photos/${
-          data.name
-        }.png?t=${Date.now()})`;
+        //get name
+        const messageName = avatar.nextElementSibling.firstElementChild.textContent;
+        if (messageName === data.name) {
+          avatar.style.backgroundImage = `url(/my-chat/photos/${
+            data.name
+          }.png?t=${Date.now()})`;
+        }
       }
     }
   }

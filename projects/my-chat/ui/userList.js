@@ -13,12 +13,9 @@ export default class UserList {
       const element = document.createElement('li');
       element.classList.add('chat__users-item', 'user');
       element.innerHTML = `
-      <div class="user__icon">
-      <img
-      class="user__avatar"
-      src="projects/my-chat/photos/${name}.png"
-      alt="аватар"
-      />
+      <div class="user__icon" 
+      style="background-image: url(/my-chat/photos/${name}.png?t=${Date.now()})">
+
       </div>
       <div class="user__info">
       <div class="user__nickname">${name}</div>

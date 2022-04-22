@@ -10,7 +10,7 @@ export default class MessageList {
     const hours = String(date.getHours()).padStart(2, 0);
     const minutes = String(date.getMinutes()).padStart(2, 0);
     const time = `${hours}:${minutes}`;
-    // if new group add message group, else add message in group
+    // if get new group - add message group, else add message in group
     if (isNewGroup) {
       const item = document.createElement('div');
       const myUserName = document.querySelector('.chat__user-name').dataset.name;
@@ -19,11 +19,8 @@ export default class MessageList {
         item.classList.add('messages--self-message');
       }
       item.innerHTML = `
-        <div class="messages__icon">
-        <img
-          class="messages__avatar"
-          src="projects/my-chat/photos/${from}.png?t=${Date.now()}"
-        />
+        <div class="messages__icon" 
+        style="background-image: url(/my-chat/photos/${from}.png?t=${Date.now()});">
         </div>
         <div class="messages__info">
         <div class="messages__name">${sanitize(from)}</div>

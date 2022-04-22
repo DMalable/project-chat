@@ -11,11 +11,6 @@ export default class LoginWindow {
 
       if (name) {
         this.onLogin(name);
-
-        // localStorage.data = '';
-        // localStorage.data = JSON.stringify({
-        //   myNickName: name,
-        // });
       }
     };
 

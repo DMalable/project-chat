@@ -86,13 +86,8 @@ ul {
   min-width: 46px;
   width: 46px;
   margin-right: 10px;
-  cursor: pointer;
   overflow: hidden;
-}
-
-.user__avatar {
-  width: 100%;
-  height: 100%;
+  background-size: cover;
 }
 
 .user__info {
@@ -195,11 +190,7 @@ ul {
   width: 33px;
   margin: 27px 12px 0px 0px;
   overflow: hidden;
-}
-
-.messages__avatar {
-  width: 100%;
-  height: 100%;
+  background-size: cover;
 }
 
 .messages__name {
@@ -452,12 +443,13 @@ ul {
   width: 86px;
   margin-right: 15px;
   cursor: pointer;
+  background-size: cover;
 }
 
-.photo-loader__avatar {
+/* .photo-loader__avatar {
   width: 28%;
   height: 28%;
-}
+} */
 
 .disable {
   display: none;
